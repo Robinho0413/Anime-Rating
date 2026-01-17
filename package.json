@@ -1,0 +1,37 @@
+{
+    "devDependencies": {
+        "@babel/core": "^7.17.0",
+        "@babel/preset-env": "^7.16.0",
+        "@symfony/webpack-encore": "^5.1.0",
+        "autoprefixer": "^10.4.23",
+        "core-js": "^3.38.0",
+        "postcss": "^8.5.6",
+        "regenerator-runtime": "^0.13.9",
+        "tailwindcss": "^4.1.18",
+        "webpack": "^5.74.0",
+        "webpack-cli": "^5.1.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress"
+    },
+    "name": "anime-rating",
+    "version": "1.0.0",
+    "description": "",
+    "main": "webpack.config.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Robinho0413/Anime-Rating.git"
+    },
+    "keywords": [],
+    "author": "",
+    "type": "commonjs",
+    "bugs": {
+        "url": "https://github.com/Robinho0413/Anime-Rating/issues"
+    },
+    "homepage": "https://github.com/Robinho0413/Anime-Rating#readme"
+}
