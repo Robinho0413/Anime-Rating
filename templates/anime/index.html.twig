@@ -22,9 +22,11 @@
                 <td>{{ anime.id }}</td>
                 <td>{{ anime.title }}</td>
                 <td>{{ anime.description }}</td>
+                <td>
                 {% if anime.image %}
                     <img src="/images/{{ anime.image }}" alt="{{ anime.title }}" style="max-width: 100px;">
                 {% endif %}
+                </td>
                 <td>{{ anime.releaseDate ? anime.releaseDate|date('Y-m-d') : '' }}</td>
                 <td>
                     <a href="{{ path('app_anime_show', {'id': anime.id}) }}">show</a>
