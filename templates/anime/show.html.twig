@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Anime{% endblock %}
+
+{% block body %}
+    <h1>Anime</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ anime.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ anime.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ anime.description }}</td>
+            </tr>
+            <tr>
+                {% if anime.image %}
+                    <img src="/images/{{ anime.image }}" alt="{{ anime.title }}" style="max-width: 1000px;">
+                {% endif %}
+            </tr>
+            <tr>
+                <th>ReleaseDate</th>
+                <td>{{ anime.releaseDate ? anime.releaseDate|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_anime_index') }}">back to list</a>
+
+    <a href="{{ path('app_anime_edit', {'id': anime.id}) }}">edit</a>
+
+    {{ include('anime/_delete_form.html.twig') }}
+{% endblock %}

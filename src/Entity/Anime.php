@@ -25,8 +25,8 @@ class Anime
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\Column]
-    private ?\DateTime $releaseDate = null;
+    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    private ?\DateTimeImmutable $releaseDate = null;
 
     /**
      * @var Collection<int, Rating>
@@ -80,12 +80,12 @@ class Anime
         return $this;
     }
 
-    public function getReleaseDate(): ?\DateTime
+    public function getReleaseDate(): ?\DateTimeImmutable
     {
         return $this->releaseDate;
     }
 
-    public function setReleaseDate(\DateTime $releaseDate): static
+    public function setReleaseDate(\DateTimeImmutable $releaseDate): static
     {
         $this->releaseDate = $releaseDate;
 
