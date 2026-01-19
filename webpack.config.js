@@ -46,18 +46,22 @@ Encore
     .enableVersioning(Encore.isProduction())
 
     // configure Babel
-    // .configureBabel((config) => {
-    //     config.plugins.push('@babel/a-babel-plugin');
-    // })
+    .configureBabel((config) => {
+        config.sourceType = "unambiguous";
+        config.presets = [["@babel/preset-env", { useBuiltIns: "usage", corejs: "3.38" }]];
+    })
 
     // enables and configure @babel/preset-env polyfills
-    .configureBabelPresetEnv((config) => {
-        config.useBuiltIns = 'usage';
-        config.corejs = '3.38';
-    })
+    // .configureBabelPresetEnv((config) => {
+    //     config.useBuiltIns = 'usage';
+    //     config.corejs = '3.38';
+    // })
 
     // enables Sass/SCSS support
     //.enableSassLoader()
+
+    // enable postcss
+    .enablePostCssLoader()
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
@@ -73,4 +77,11 @@ Encore
     //.autoProvidejQuery()
 ;
 
-module.exports = Encore.getWebpackConfig();
+// Configurer webpack pour ignorer les fichiers de build
+const webpackConfig = Encore.getWebpackConfig();
+webpackConfig.watchOptions = {
+    ignored: /node_modules/,
+    poll: false,
+};
+
+module.exports = webpackConfig;

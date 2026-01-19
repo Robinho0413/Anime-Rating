@@ -35,5 +35,65 @@
 
     <a href="{{ path('app_anime_edit', {'id': anime.id}) }}">edit</a>
 
+    <!-- Bouton pour ouvrir la modal -->
+    <button onclick="openModal()" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+        Ouvrir Modal
+    </button>
+
+    <!-- Modal placée dans le body -->
+    <div id="animeModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9999; background-color: rgba(0, 0, 0, 0.5);">
+        <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 1rem;">
+            <div class="bg-white rounded-lg shadow-lg w-full max-w-md mx-4" onclick="event.stopPropagation()">
+                <!-- En-tête -->
+                <div class="flex justify-between items-center px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-xl font-bold text-gray-800">{{ anime.title }}</h2>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                </div>
+
+                <!-- Contenu -->
+                <div class="px-6 py-4">
+                    <p class="font-semibold text-gray-700 mb-2">Description:</p>
+                    <p class="text-gray-600 mb-4">{{ anime.description }}</p>
+
+                    <p class="font-semibold text-gray-700 mb-2">Date de sortie:</p>
+                    <p class="text-gray-600">{{ anime.releaseDate ? anime.releaseDate|date('Y-m-d') : 'Non disponible' }}</p>
+                </div>
+
+                <!-- Pied de page -->
+                <div class="flex justify-end gap-3 px-6 py-4 border-t border-gray-200">
+                    <button onclick="closeModal()" class="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition">
+                        Fermer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('animeModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('animeModal').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // Fermer la modal en cliquant sur le fond
+        document.getElementById('animeModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeModal();
+            }
+        });
+
+        // Fermer avec Echap
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+
     {{ include('anime/_delete_form.html.twig') }}
 {% endblock %}
