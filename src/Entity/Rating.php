@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\RatingRepository;
-use BcMath\Number;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -15,7 +14,7 @@ class Rating
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: 1, nullable: false)]
+    #[ORM\Column(type: Types::DECIMAL, precision: 2, scale: 1)]
     private ?string $rating = null;
 
     #[ORM\ManyToOne(inversedBy: 'ratings')]
@@ -37,15 +36,14 @@ class Rating
         return $this->id;
     }
 
-    public function getRating(): ?Number
+    public function getRating(): ?float
     {
-        return $this->rating;
+        return $this->rating !== null ? (float) $this->rating : null;
     }
 
-    public function setRating(?Number $rating): static
+    public function setRating(float $rating): self
     {
-        $this->rating = $rating;
-
+        $this->rating = (string) $rating;
         return $this;
     }
 

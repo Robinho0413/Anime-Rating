@@ -14,11 +14,14 @@ class RatingType extends AbstractType
         $builder
             ->add('rating', NumberType::class, [
                 'scale' => 1,
+                'html5' => true,
                 'attr' => [
                     'min' => 0,
                     'max' => 5,
-                    'step' => 0.5
-                ]
+                    'step' => 0.5,
+                    'class' => 'hidden'
+                ],
+                'label' => false
             ])
             ->add('comment', TextareaType::class, [
                 'required' => false
