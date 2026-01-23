@@ -31,12 +31,16 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_anime_index') }}">back to list</a>
+    <button class="cursor-pointer px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+        <a href="{{ path('app_anime_index') }}">back to list</a>
+    </button>
 
-    <a href="{{ path('app_anime_edit', {'id': anime.id}) }}">edit</a>
+    <button class="cursor-pointer px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+        <a href="{{ path('app_anime_edit', {'id': anime.id}) }}">edit</a>
+    </button>
 
     <!-- Bouton pour ouvrir la modal -->
-    <button onclick="openModal()" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+    <button onclick="openModal()" class="cursor-pointer px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
         Ouvrir Modal
     </button>
 
@@ -47,7 +51,7 @@
                 <!-- En-tête -->
                 <div class="flex justify-between items-center px-6 py-4 border-b border-gray-200">
                     <h2 class="text-xl font-bold text-gray-800">{{ anime.title }}</h2>
-                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                    <button onclick="closeModal()" class="cursor-pointer text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
                 </div>
 
                 <!-- Contenu -->
@@ -100,7 +104,7 @@
                         <div class="flex justify-end">
                             <button
                                 type="submit"
-                                class="px-4 py-2 bg-yellow-400 text-white rounded hover:bg-yellow-500 transition"
+                                class="cursor-pointer px-4 py-2 bg-yellow-400 text-white rounded hover:bg-yellow-500 transition"
                             >
                                 Envoyer la note
                             </button>

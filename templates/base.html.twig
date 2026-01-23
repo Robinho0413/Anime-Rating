@@ -13,6 +13,39 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <!-- Navigation Bar -->
+        <nav class="bg-blue-600 text-white shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0">
+                        <a href="{{ path('app_anime_index') }}" class="text-xl font-bold">🎬 AnimeRating</a>
+                    </div>
+
+                    <!-- Menu Links -->
+                    <div class="flex gap-4 items-center">
+                        <a href="{{ path('app_anime_index') }}" class="hover:bg-blue-700 px-3 py-2 rounded transition">
+                            Accueil
+                        </a>
+
+                        {% if app.user %}
+                            <span class="text-sm">{{ app.user.username }}</span>
+                            <a href="{{ path('app_logout') }}" class="hover:bg-red-500 px-3 py-2 rounded transition bg-red-600">
+                                Déconnexion
+                            </a>
+                        {% else %}
+                            <a href="{{ path('app_login') }}" class="hover:bg-green-700 px-3 py-2 rounded transition bg-green-600">
+                                Connexion
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            {% block body %}{% endblock %}
+        </div>
     </body>
 </html>
